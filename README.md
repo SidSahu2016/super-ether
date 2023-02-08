@@ -1,1 +1,1 @@
-# super-ether
+# super-ether is an utility token built on ERC20 standards to address the issue of scalability and high gas prices 
