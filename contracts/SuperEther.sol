@@ -1,10 +1,15 @@
 //SPDX-LICENSE-IDENTIFIER : MIT 
 pragma solidity ^0.8.17 ;
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+//import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 //import "@OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
 //import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 //import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Capped.sol";
 //import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+
+import "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
+import "node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
  contract SuperEther is ERC20Capped,ERC20Burnable  {
     address payable public  owner;
