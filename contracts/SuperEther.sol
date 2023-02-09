@@ -6,10 +6,10 @@ pragma solidity ^0.8.17 ;
 //import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Capped.sol";
 //import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-import "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
-import "node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import "node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
  contract SuperEther is ERC20Capped,ERC20Burnable  {
     address payable public  owner;
@@ -17,7 +17,7 @@ import "node_modules/@openzeppelin/contracts/access/Ownable.sol";
    // address public test1 = block.coinbase;
    // address public test2 = address(0);
 
-    constructor (uint256 cap,uint256 initialSupply, uint256 reward) ERC20("SuperEther", "SETH") ERC20Capped(cap /** (10 ** decimals())*/) {
+    constructor (uint256 cap,uint256 initialSupply, uint256 reward) ERC20("SuperEther", "SETH") ERC20Capped(cap ) {
         owner = payable(msg.sender);
         _mint(owner, initialSupply /** (10 ** decimals())*/);
         blockreward = reward ;
@@ -34,7 +34,7 @@ import "node_modules/@openzeppelin/contracts/access/Ownable.sol";
         super._mint(account, amount);
     }
 
-    function _mintMinerreward() internal {
+    function _mintMinerReward() internal {
         _mint(block.coinbase, blockreward); //reward will be added to the miner who is adding
         //this block on the blockchain 
     }
@@ -44,7 +44,7 @@ import "node_modules/@openzeppelin/contracts/access/Ownable.sol";
             //if statement here check the validity of the to and from addresses 
             //address(0) is an invalid address it refers to no one
             //block.coinbase is the address of the miner , it is not the participating address
-       _mintMinerreward;
+       _mintMinerReward;
         }
         super._beforeTokenTransfer(from, to , value);
     }
