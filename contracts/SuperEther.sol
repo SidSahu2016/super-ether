@@ -17,10 +17,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
    // address public test1 = block.coinbase;
    // address public test2 = address(0);
 
-    constructor (uint256 cap,uint256 initialSupply, uint256 reward) ERC20("SuperEther", "SETH") ERC20Capped(cap ) {
+    constructor (uint256 cap,uint256 initialSupply, uint256 reward) ERC20("SuperEther", "SETH") ERC20Capped(cap * (10 ** decimals() ) ) {
         owner = payable(msg.sender);
-        _mint(owner, initialSupply /** (10 ** decimals())*/);
-        blockreward = reward ;
+        _mint(owner, initialSupply * (10 ** decimals()) );
+        blockreward = reward * (10 ** decimals()) ;
     }
 
     modifier onlyOwner() {
@@ -51,7 +51,14 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
     function setMinerReward(uint256 reward) public onlyOwner {
         //this function is to modify the miner rewards in future but it can only be done by the owner 
-        blockreward = reward ; 
+        blockreward = reward * (10 ** decimals()) ; 
+    }
+
+     function transfer(address to, uint256 amount) public virtual override returns (bool) {
+        //address owner = _msgSender();
+        require(msg.sender != to , "**Error log- You are trying to send tokens to your own address**");
+        super._transfer(owner, to, amount);
+        return true;
     }
 
     function destroy() public onlyOwner{
