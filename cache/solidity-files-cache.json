@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\Self Study\\Web3\\Local_Git_Proj_Repository\\super-ether\\contracts\\SuperEther.sol": {
-      "lastModificationDate": 1675955074848,
-      "contentHash": "54da6013548ef80c9c53d658f5dc4362",
+      "lastModificationDate": 1676219191320,
+      "contentHash": "1ee2c4d0ffb66570e71df8fa3fdff032",
       "sourceName": "contracts/SuperEther.sol",
       "solcConfig": {
         "version": "0.8.17",
