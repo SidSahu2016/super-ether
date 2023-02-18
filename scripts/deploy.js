@@ -1,15 +1,15 @@
-const hre = require("hardhat");
-
 async function main() {
-  const SETH_Contract = await hre.ethers.getContractFactory("SuperEther");
-  const SETH_TOKEN = await SETH_Contract.deploy(1000,700, 50);
+  const SmartDoge_NFT = await ethers.getContractFactory("SmartDoge");
 
-  await SETH_TOKEN.deployed();
-
-  console.log("SuperEther deployed: ", SETH_TOKEN.address);
+  // Start deployment, returning a promise that resolves to a contract object
+  const TRUF = await SmartDoge_NFT.deploy();
+  console.log("Contract deployed to address:", TRUF.address);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+//0x22906872f9477DCc05Adb7A1d70E9E17e12D36A6
